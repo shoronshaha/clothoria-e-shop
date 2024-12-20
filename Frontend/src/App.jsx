@@ -13,13 +13,27 @@ import ShoppingHome from "./pages/shopping-view/home";
 import ShoppingListing from "./pages/shopping-view/listing";
 import ShoppingCheckout from "./pages/shopping-view/checkout";
 import ShoppingAccount from "./pages/shopping-view/account";
+import CheckAuth from "./components/common/check-auth";
+import UnauthPage from "./pages/unauth-page";
 
 function App() {
+  const isAuthenticated = true;
+  const user = {
+    name: "shoron",
+    role: "admin",
+  };
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
         {/* Auth route  */}
-        <Route path="/auth" element={<AuthLayout></AuthLayout>}>
+        <Route
+          path="/auth"
+          element={
+            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+              <AuthLayout></AuthLayout>
+            </CheckAuth>
+          }
+        >
           <Route path="login" element={<AuthLogin></AuthLogin>}></Route>
           <Route
             path="register"
@@ -27,7 +41,14 @@ function App() {
           ></Route>
         </Route>
         {/* admin route */}
-        <Route path="/admin" element={<AdminLayout></AdminLayout>}>
+        <Route
+          path="/admin"
+          element={
+            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+              <AdminLayout></AdminLayout>
+            </CheckAuth>
+          }
+        >
           <Route
             path="dashboard"
             element={<AdminDashboard></AdminDashboard>}
@@ -43,7 +64,14 @@ function App() {
           ></Route>
         </Route>
         {/* shopping layout */}
-        <Route path="/shop" element={<ShoppingLayout></ShoppingLayout>}>
+        <Route
+          path="/shop"
+          element={
+            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+              <ShoppingLayout></ShoppingLayout>
+            </CheckAuth>
+          }
+        >
           <Route path="home" element={<ShoppingHome></ShoppingHome>}></Route>
           <Route
             path="listing"
@@ -58,6 +86,7 @@ function App() {
             element={<ShoppingAccount></ShoppingAccount>}
           ></Route>
         </Route>
+        <Route path="/unauth-page" element={<UnauthPage></UnauthPage>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
