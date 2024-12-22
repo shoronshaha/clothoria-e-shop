@@ -84,7 +84,3 @@ function AdminSideBar({ open, setOpen }) {
 }
 
 export default AdminSideBar;
-
-{
-  /* <img className="size-12" src={logo} alt="" /> */
-}
