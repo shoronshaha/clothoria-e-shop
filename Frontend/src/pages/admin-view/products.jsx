@@ -1,4 +1,5 @@
 import ProductImageUpload from "@/components/admin-view/image-upload";
+import AdminProductTile from "@/components/admin-view/product-tile";
 import CommonForm from "@/components/common/form";
 import { Button } from "@/components/ui/button";
 import {
@@ -7,14 +8,15 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+
 import { addProductFormElements } from "@/config";
 import { useToast } from "@/hooks/use-toast";
 import {
   addNewProduct,
+  deleteProduct,
   editProduct,
   fetchAllProducts,
 } from "@/store/admin/products-slice";
-
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -39,7 +41,7 @@ function AdminProducts() {
   const [imageLoadingState, setImageLoadingState] = useState(false);
   const [currentEditedId, setCurrentEditedId] = useState(null);
 
-  // const { productList } = useSelector((state) => state.adminProducts);
+  const { productList } = useSelector((state) => state.adminProducts);
   const dispatch = useDispatch();
   const { toast } = useToast();
 
@@ -80,13 +82,13 @@ function AdminProducts() {
         });
   }
 
-  // function handleDelete(getCurrentProductId) {
-  //   dispatch(deleteProduct(getCurrentProductId)).then((data) => {
-  //     if (data?.payload?.success) {
-  //       dispatch(fetchAllProducts());
-  //     }
-  //   });
-  // }
+  function handleDelete(getCurrentProductId) {
+    dispatch(deleteProduct(getCurrentProductId)).then((data) => {
+      if (data?.payload?.success) {
+        dispatch(fetchAllProducts());
+      }
+    });
+  }
 
   function isFormValid() {
     return Object.keys(formData)
@@ -109,10 +111,9 @@ function AdminProducts() {
         </Button>
       </div>
       <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
-        {/* {productList && productList.length > 0
+        {productList && productList.length > 0
           ? productList.map((productItem) => (
-              <AdminProductTitle
-                key={setCurrentEditedId}
+              <AdminProductTile
                 setFormData={setFormData}
                 setOpenCreateProductsDialog={setOpenCreateProductsDialog}
                 setCurrentEditedId={setCurrentEditedId}
@@ -120,7 +121,7 @@ function AdminProducts() {
                 handleDelete={handleDelete}
               />
             ))
-          : null} */}
+          : null}
       </div>
       <Sheet
         open={openCreateProductsDialog}
