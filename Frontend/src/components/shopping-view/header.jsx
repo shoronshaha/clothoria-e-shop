@@ -8,7 +8,11 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
-import { shoppingViewHeaderMenuItems } from "@/config";
+
+import { Label } from "../ui/label";
+import UserCartWrapper from "./cart-wrapper";
+import { logoutUser } from "@/store/auth-slice";
+import { Avatar, AvatarFallback } from "../ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,12 +21,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Avatar, AvatarFallback } from "../ui/avatar";
-import { logoutUser } from "@/store/auth-slice";
-import UserCartWrapper from "./cart-wrapper";
-import { useEffect, useState } from "react";
-import { fetchCartItems } from "@/store/shop/cart-slice";
-import { Label } from "../ui/label";
+import { shoppingViewHeaderMenuItems } from "../../config/index";
 
 function MenuItems() {
   const navigate = useNavigate();
