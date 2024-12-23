@@ -5,7 +5,6 @@ function ShoppingLayout() {
   return (
     <div className="flex flex-col bg-white overflow-hidden">
       {" "}
-      shoping layout
       {/* common header of the shopping view */}
       <ShoppingHeader></ShoppingHeader>
       <main className="flex flex-col w-full">
