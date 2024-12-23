@@ -22,6 +22,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { shoppingViewHeaderMenuItems } from "../../config/index";
+import { useEffect, useState } from "react";
 
 function MenuItems() {
   const navigate = useNavigate();
