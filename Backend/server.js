@@ -7,6 +7,7 @@ const adminProductsRouter = require("./routes/admin/products-routes");
 const shopProductsRouter = require("./routes/shop/products-routes");
 const shopCartRouter = require("./routes/shop/cart-routes");
 const shopAddressRouter = require("./routes/shop/address-routes");
+const shopOrderRouter = require("./routes/shop/order-routes");
 
 mongoose
   .connect(
@@ -40,5 +41,5 @@ app.use("/api/admin/products", adminProductsRouter);
 app.use("/api/shop/product", shopProductsRouter);
 app.use("/api/shop/cart", shopCartRouter);
 app.use("/api/shop/address", shopAddressRouter);
-
+app.use("/api/shop/order", shopOrderRouter);
 app.listen(PORT, () => console.log(`server is now ruuning on port ${PORT}`));
