@@ -1,4 +1,5 @@
 import CommonForm from "@/components/common/form";
+
 import { loginFormControls } from "@/config";
 import { useToast } from "@/hooks/use-toast";
 import { loginUser } from "@/store/auth-slice";
@@ -40,8 +41,7 @@ function AuthLogin() {
           Sign in to your account
         </h1>
         <p className="mt-2">
-          {" "}
-          Do not have account?
+          Don't have an account
           <Link
             className="font-medium ml-2 text-primary hover:underline"
             to="/auth/register"

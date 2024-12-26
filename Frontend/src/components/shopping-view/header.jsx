@@ -8,11 +8,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
-
-import { Label } from "../ui/label";
-import UserCartWrapper from "./cart-wrapper";
-import { logoutUser } from "@/store/auth-slice";
-import { Avatar, AvatarFallback } from "../ui/avatar";
+import { shoppingViewHeaderMenuItems } from "@/config";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,8 +17,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { shoppingViewHeaderMenuItems } from "../../config/index";
+import { Avatar, AvatarFallback } from "../ui/avatar";
+import { logoutUser } from "@/store/auth-slice";
+import UserCartWrapper from "./cart-wrapper";
 import { useEffect, useState } from "react";
+import { fetchCartItems } from "@/store/shop/cart-slice";
+import { Label } from "../ui/label";
 
 function MenuItems() {
   const navigate = useNavigate();
@@ -75,9 +75,9 @@ function HeaderRightContent() {
     dispatch(logoutUser());
   }
 
-  // useEffect(() => {
-  //   dispatch(fetchCartItems(user?.id));
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchCartItems(user?.id));
+  }, [dispatch]);
 
   console.log(cartItems, "sangam");
 
