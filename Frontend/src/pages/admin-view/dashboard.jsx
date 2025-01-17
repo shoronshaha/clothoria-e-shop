@@ -55,6 +55,9 @@ function AdminDashboard() {
               </div>
             ))
           : null}
+        <Button onClick={handleUploadFeatureImage} className="mt-5 w-full">
+          Upload
+        </Button>
       </div>
     </div>
   );
