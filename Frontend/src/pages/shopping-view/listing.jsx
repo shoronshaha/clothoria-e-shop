@@ -1,22 +1,22 @@
-import ProductFilter from "@/components/shopping-view/filter";
-import ProductDetailsDialog from "@/components/shopping-view/product-details";
-import ShoppingProductTile from "@/components/shopping-view/product-tile";
-import { Button } from "@/components/ui/button";
+import ProductFilter from "../../components/shopping-view/filter";
+import ProductDetailsDialog from "../../components/shopping-view/product-details";
+import ShoppingProductTile from "../../components/shopping-view/product-tile";
+import { Button } from "../../components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "../../components/ui/dropdown-menu";
 
-import { sortOptions } from "@/config";
-import { useToast } from "@/hooks/use-toast";
-import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
+import { sortOptions } from "../../config/index";
+import { useToast } from "../../hooks/use-toast";
+import { addToCart, fetchCartItems } from "../../store/shop/cart-slice/index";
 import {
   fetchAllFilteredProducts,
   fetchProductDetails,
-} from "@/store/shop/products-slice";
+} from "../../store/shop/products-slice/index";
 import { ArrowUpDownIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

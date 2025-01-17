@@ -1,4 +1,4 @@
-import { filterOptions } from "@/config";
+import { filterOptions } from "../../config/index";
 import { Fragment } from "react";
 import { Label } from "../ui/label";
 import { Checkbox } from "../ui/checkbox";
