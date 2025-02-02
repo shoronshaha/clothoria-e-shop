@@ -21,7 +21,12 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 //create a separate file for this and then import/use that file here
 
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000, // 5 seconds timeout
+    socketTimeoutMS: 45000, // 45 seconds timeout
+  })
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 
